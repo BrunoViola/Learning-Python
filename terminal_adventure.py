@@ -3,8 +3,8 @@ import random
 game_card_start = """
       ___________________________________
      |     🎮 Terminal Adventure 🕹️       |
-     |                                   |
-     |                                   |
+     |     Your mission is to defeat     |
+     |  creatures to protect the village |
      |                                   |
       ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾    
 """
@@ -22,8 +22,8 @@ game_card_win = """
       ___________________________________
      |     🎮 Terminal Adventure 🕹️       |
      |             You won               |
-     |                                   |
-     |                                   |
+     |      The villagers are really     |
+     |       grateful with you help      |
       ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾    
 """
 
@@ -33,7 +33,7 @@ def print_div():
 def main():
    print(game_card_start)
 
-   start = int(input('Would you like to start the game?\n1 - Yes\t0 - No\nYour option: '))
+   start = int(input('Would you like to start the game?\n1 - Yes\t\t0 - No\nYour option: '))
 
    print_div()
    if start == 1:
@@ -71,7 +71,7 @@ def main():
       print(f'Based on this, you have {life_point} life point and cause a damage of {damage}')
    print_div()
 
-   way_choose = int(input(f'{player_name}, we are suffering a direct attack on our village, you need to go there. But, you need to decide the way, are going by the river or by the forest?\n Type 1 to choose the river and type 2 if you prefer the forest: '))
+   way_choose = int(input(f'{player_name}, we are suffering a direct attack on our village, you need to go there. But, you need to decide the way, are you going by the river or by the forest?\n Type 1 to choose the river and type 2 if you prefer the forest: '))
    print_div()
 
    if way_choose not in [1, 2]:
@@ -126,6 +126,37 @@ def main():
             if superpower_choose == 1:
                creature_life = creature_life - random.randint(30, 40)
          print_div()
+   
+   print_div()
+   print('You arrived at the village and there\'s one more creature')
+   final_choose = int(input('Would you like to (1) run away and rest or (2) be brave and defeat the creature? '))
+
+   if final_choose == 1:
+      print('A tree fell off and killed you')
+      print(game_card_died)
+      exit(0)
+   else:
+      print('You\'re going to fight again')
+      creature_life = random.randint(30, 50)
+      creature_damage = random.randint(2, 8)
+      print(f'The creature has {creature_life} and cause {creature_damage} points of damage')
+      while creature_life>0 and life_point > 0:
+         print('You made an attack')
+         creature_life -= damage
+         if creature_life <= 0:
+            print('You killed the creature')
+            break
+         print(f'The creature has now {creature_life} life points')
+         print('The creature made an attack')
+         life_point -= creature_damage
+         print(f'You have now {life_point} life points')
+         if life_point <= 0:
+            print(game_card_died)
+            exit(0)
+         else:
+            superpower_choose = int(input('Do you want to use a superpower? (1) - Yes    (any key) - No'))
+            if superpower_choose == 1:
+               creature_life = creature_life - random.randint(30, 40)
    
    print(game_card_win)
 
