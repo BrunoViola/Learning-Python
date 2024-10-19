@@ -1,0 +1,12 @@
+alfabeto = ['A', 'B', 'D']
+print(alfabeto)
+alfabeto.append('E')
+print(alfabeto)
+alfabeto.insert(2, 'C')
+print(alfabeto)
+alfabeto.remove('C')
+print(alfabeto)
+alfabeto.pop(0)
+print(alfabeto)
+alfabeto.reverse()
+print(alfabeto)
