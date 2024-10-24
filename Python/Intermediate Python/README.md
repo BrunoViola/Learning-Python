@@ -1,0 +1,2 @@
+# Intermediate Python
+Here are some exercises completed during Codédex's Intermediate Python Course. The course covered topics such as Data Structures, save and read to a file using file input & output, Functional Programming and Basic Unit Tests.
