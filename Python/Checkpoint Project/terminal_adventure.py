@@ -30,6 +30,31 @@ game_card_win = """
 def print_div():
    print('----------------------------')
 
+def combat(creature_life, creature_damage, life_point, damage):
+   kill_messages=['You made a good job!', 'Let\'s Go!', 'You\'re a hero']
+   while creature_life>0 and life_point > 0:
+         print('You made an attack')
+         creature_life -= damage
+         if creature_life <= 0:
+            print('You killed the creature')
+            print(random.choice(kill_messages))
+            break
+         print(f'The creature has now {creature_life} life points')
+         print('The creature made an attack')
+         life_point -= creature_damage
+         print(f'You have now {life_point} life points')
+         if life_point <= 0:
+            print(game_card_died)
+            exit(0)
+         else:
+            superpower_choose = int(input('Do you want to use a superpower? (1) - Yes    (any key) - No: '))
+            if superpower_choose == 1:
+               creature_life = creature_life - random.randint(30, 40)
+               if creature_life <= 0:
+                  print('You killed the creature')
+                  print(random.choice(kill_messages))
+                  break
+
 def main():
    print(game_card_start)
 
@@ -84,57 +109,17 @@ def main():
       creature_life = random.randint(50, 70)
       creature_damage = random.randint(5, 30)
       print(f'The aquatic creature has {creature_life} and deals {creature_damage} points of damage')
-      while creature_life>0 and life_point > 0:
-         print('You made an attack')
-         creature_life -= damage
-         if creature_life <= 0:
-            print('You killed the creature')
-            break
-         print(f'The creature has now {creature_life} life points')
-         print('The creature made an attack')
-         life_point -= creature_damage
-         print(f'You have now {life_point} life points')
-         if life_point <= 0:
-            print(game_card_died)
-            exit(0)
-         else:
-            superpower_choose = int(input('Do you want to use a superpower? (1) - Yes    (any key) - No'))
-            if superpower_choose == 1:
-               creature_life = creature_life - random.randint(30, 40)
-               if creature_life <= 0:
-                  print('You killed the creature')
-                  break
-            
-         print_div()
+      combat(creature_life, creature_damage, life_point, damage)      
+      print_div()
    
    if way_choose == 2: #Forest
       print('You\'re entering the forest and suddenly a creature appears, let\'s fight')
       creature_life = random.randint(60, 75)
       creature_damage = random.randint(10, 25)
       print(f'The creature has {creature_life} and deals {creature_damage} points of damage')
-      while creature_life>0 and life_point > 0:
-         print('You made an attack')
-         creature_life -= damage
-         if creature_life <= 0:
-            print('You killed the creature')
-            break
-         print(f'The creature has now {creature_life} life points')
-         print('The creature made an attack')
-         life_point -= creature_damage
-         print(f'You have now {life_point} life points')
-         if life_point <= 0:
-            print(game_card_died)
-            exit(0)
-         else:
-            superpower_choose = int(input('Do you want to use a superpower? (1) - Yes    (any key) - No'))
-            if superpower_choose == 1:
-               creature_life = creature_life - random.randint(30, 40)
-               if creature_life <= 0:
-                  print('You killed the creature')
-                  break
-         print_div()
+      combat(creature_life, creature_damage, life_point, damage)
+      print_div()
    
-   print_div()
    print('You arrived at the village and there\'s one more creature')
    final_choose = int(input('Would you like to (1) run away and rest or (2) be brave and defeat the creature? '))
 
@@ -147,26 +132,7 @@ def main():
       creature_life = random.randint(30, 50)
       creature_damage = random.randint(2, 8)
       print(f'The creature has {creature_life} and deals {creature_damage} points of damage')
-      while creature_life>0 and life_point > 0:
-         print('You made an attack')
-         creature_life -= damage
-         if creature_life <= 0:
-            print('You killed the creature')
-            break
-         print(f'The creature has now {creature_life} life points')
-         print('The creature made an attack')
-         life_point -= creature_damage
-         print(f'You have now {life_point} life points')
-         if life_point <= 0:
-            print(game_card_died)
-            exit(0)
-         else:
-            superpower_choose = int(input('Do you want to use a superpower? (1) - Yes    (any key) - No'))
-            if superpower_choose == 1:
-               creature_life = creature_life - random.randint(30, 40)
-               if creature_life <= 0:
-                  print('You killed the creature')
-                  break
+      combat(creature_life, creature_damage, life_point, damage)
    
    print(game_card_win)
 
