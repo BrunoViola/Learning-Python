@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 
 def main():
+   print("\n### ALGORITMO DDA ###\n")
+
    # Os valores devem ser informados separados por espaço
    x_inicial, y_inicial= (input("Informe os valores de x e y iniciais: ").split(" "))
    x_final, y_final = (input("Informe os valores de x e y finais: ").split(" "))
@@ -32,6 +34,7 @@ def main():
    
    pontos.append((x_inicial, y_inicial))
 
+   # Copio os valores para que não sejam alterados
    x_pontos = x_inicial
    y_pontos = y_inicial
 
@@ -40,21 +43,23 @@ def main():
       y_pontos += y_inc
       pontos.append((round(x_pontos),(round(y_pontos))))
    
-   print("\nPontos calculados:")
+   print("\nPontos calculados pelo Algoritmo DDA:")
    print(pontos)
 
-   x,y = zip(*pontos)
+   # Impressão dos pontos calculados
+   x,y = zip(*pontos) # Aqui eu separo os valores de x e y que estão armazenados em uma lista de tuplas para que a plotagem possa ser feita
 
    plt.title("Algoritmo DDA")
    plt.xlabel("Eixo X")
    plt.ylabel("Eixo Y")
-   plt.grid(True, linestyle='--', which='both', linewidth=0.5)
+   plt.grid(True, linestyle='--', linewidth=0.5)
    plt.gca().set_axisbelow(True)
-   plt.plot([x_inicial,x_final], [y_inicial, y_final], label='Segmento de reta')
-   plt.scatter(x,y, label='Pontos calculados', color='black', zorder=5)
+   plt.plot([x_inicial,x_final], [y_inicial, y_final], label='Segmento de reta original') # Realizo aqui o plota do segmento de reta
+   plt.scatter(x,y, label='Pontos calculados', color='black', zorder=5) # Aqui eu faço o plot dos pontos calculados anteriomente
    plt.legend()
    plt.show()
 
    print("\n##################")
+
 if __name__ == "__main__":
    main()
