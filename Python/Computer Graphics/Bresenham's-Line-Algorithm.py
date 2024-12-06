@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 def main():
-   print("\n### ALGORITMO DE BRESENHAM ###\n")
+   print("\n### ALGORITMO DE BRESENHAM PARA RETAS ###\n")
 
    # Os valores devem ser informados separados por espaço
    x_inicial, y_inicial= (input("Informe os valores de x e y iniciais: ").split(" "))
@@ -56,13 +56,13 @@ def main():
       pontos.append((x_ponto, y_ponto)) # Adição dos pontos à lista
 
    # Impressão dos pontos calculados
-   print("Pontos calculados pelo Algoritmo de Bresenham:")
+   print("Pontos calculados pelo Algoritmo de Bresenham para Retas:")
    print(pontos)
 
    # Impressão dos pontos calculados
    x,y = zip(*pontos) # Aqui eu separo os valores de x e y que estão armazenados em uma lista de tuplas para que a plotagem possa ser feita
 
-   plt.title("Algoritmo de Bresenham")
+   plt.title("Algoritmo de Bresenham para Retas")
    plt.xlabel("Eixo X")
    plt.ylabel("Eixo Y")
    plt.grid(True, linestyle='--', linewidth=0.5)
