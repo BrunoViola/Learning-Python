@@ -1,2 +1,2 @@
 ﻿# Learning Python
-This repository contains projects and exercises completed during courses at Codédex.
+This repository contains projects and exercises completed during courses at Codédex and DataCamp.
